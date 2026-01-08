@@ -30,11 +30,15 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
+      - name: Generate Keystore
+        run: |
+          keytool -genkeypair -v -keystore android.keystore -alias android -keyalg RSA -keysize 2048 -validity 10000 -storepass password -keypass password -dname "CN=Android Debug,O=Android,C=US"
+
       - name: Build TWA
         run: |
           # Note: This requires a configured twa-manifest.json
           # You might need to adjust the manifest with your actual domain
-          bubblewrap build --manifest twa-manifest.json --skipKeyGeneration
+          bubblewrap build --manifest twa-manifest.json --skipKeyGeneration --storePassword password --keyPassword password
 
       - name: Upload APK
         uses: actions/upload-artifact@v3
