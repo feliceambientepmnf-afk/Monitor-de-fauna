@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Fauna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Proj4js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.0/proj4.js"></script>
+    <!-- SheetJS (XLSX) -->
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a1d23">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker registered', reg))
+                    .catch(err => console.log('Service Worker registration failed', err));
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="main-header">
+            <div class="logo">
+                <ion-icon name="paw"></ion-icon>
+                <span>WildTrack</span>
+            </div>
+            <nav class="main-nav">
+                <button class="nav-btn active" data-view="dashboard">
+                    <ion-icon name="grid-outline"></ion-icon>
+                    Painel
+                </button>
+                <button class="nav-btn" data-view="locations">
+                    <ion-icon name="map-outline"></ion-icon>
+                    Locais
+                </button>
+                <button class="nav-btn" data-view="cameras">
+                    <ion-icon name="camera-outline"></ion-icon>
+                    Câmeras
+                </button>
+                <button class="nav-btn" data-view="gallery">
+                    <ion-icon name="images-outline"></ion-icon>
+                    Galeria
+                </button>
+                <button class="nav-btn" data-view="reports">
+                    <ion-icon name="stats-chart-outline"></ion-icon>
+                    Relatórios
+                </button>
+                <button class="nav-btn" data-view="settings">
+                    <ion-icon name="settings-outline"></ion-icon>
+                    Config
+                </button>
+            </nav>
+        </header>
+
+        <main id="main-content" class="content-area">
+            <!-- Dynamic Content Will Be Injected Here -->
+        </main>
+
+        <!-- Floating Action Button -->
+        <button id="fab-add" class="fab">
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-container" class="modal-overlay hidden">
+        <!-- Modal content loaded dynamically -->
+    </div>
+
+    <script src="app.js" defer></script>
+</body>
+
+</html>

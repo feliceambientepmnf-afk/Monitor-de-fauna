@@ -1,0 +1,17 @@
+{
+    "name": "WildTrack Monitor",
+    "short_name": "WildTrack",
+    "description": "Monitor and track wildlife sightings.",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#0f1115",
+    "theme_color": "#1a1d23",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
