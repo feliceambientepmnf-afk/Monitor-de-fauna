@@ -38,6 +38,8 @@ jobs:
 
       - name: Build TWA
         run: |
+          # Note: This requires a configured twa-manifest.json
+          # You might need to adjust the manifest with your actual domain
           bubblewrap build --manifest twa-manifest.json --skipKeyGeneration --storePassword password --keyPassword password
 
       - name: Upload APK
